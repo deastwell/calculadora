@@ -1,8 +1,8 @@
 package org.example;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
+import static java.lang.Math.sqrt;
 
 public class Calculator extends JFrame{
     private double total1 = 0.0;
@@ -24,7 +24,7 @@ public class Calculator extends JFrame{
     private JButton a3Button;
     private JButton a6Button;
     private JButton a9Button;
-    private JButton button17;
+    private JButton masmenos;
     private JButton restaButton;
     private JButton multButton;
     private JButton divButton;
@@ -39,7 +39,8 @@ public class Calculator extends JFrame{
         setSize(400,400);
         setTitle("Calculadora");
         setLocationRelativeTo(null);
-        setResizable(false);
+        setResizable(true);
+
 
         a1Button.addActionListener(e -> {
             String button1text = a1Button.getText();
@@ -102,7 +103,7 @@ public class Calculator extends JFrame{
         });
 
         CEButton2.addActionListener(e -> {
-            total2= 0;
+            total2 = 0;
             textField.setText("");
 
         });
@@ -137,6 +138,15 @@ public class Calculator extends JFrame{
             getOperador(texto_boton);
 
         });
+        raizButton1.addActionListener(e -> {
+            total2 = sqrt(Double.parseDouble((textField.getText())));
+            textField.setText(String.valueOf(total2));
+        });
+
+        masmenos.addActionListener(e -> {
+            total2= (-1)*(Double.parseDouble((textField.getText())));
+            textField.setText(String.valueOf(total2));
+        });
     }
     private void getOperador(String textobutton){
         operador = textobutton.charAt(0);
@@ -148,7 +158,6 @@ public class Calculator extends JFrame{
     public void load(){
         this.setVisible(true);
     }
-
 
 
 

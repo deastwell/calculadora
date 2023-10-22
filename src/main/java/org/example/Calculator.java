@@ -42,6 +42,7 @@ public class Calculator extends JFrame{
         setResizable(true);
 
 
+        //ActionListener de botones de los numeros
         a1Button.addActionListener(e -> {
             String button1text = a1Button.getText();
             textField.setText(textField.getText()+button1text);
@@ -172,6 +173,7 @@ public class Calculator extends JFrame{
             textField.setText(String.valueOf(total2));
         });
     }
+    //Metodo para obtener operando
     private void getOperador(String textobutton){
         operador = textobutton.charAt(0);
         total1=total1+ Double.parseDouble((textField.getText()));

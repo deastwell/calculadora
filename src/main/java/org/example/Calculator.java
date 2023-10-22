@@ -83,13 +83,17 @@ public class Calculator extends JFrame{
             textField.setText(textField.getText()+button0text);
         });
 
-
+        //ActionListener del boton de sumar
         sumarButton.addActionListener(e -> {
             String texto_boton = sumarButton.getText();
-            getOperador(texto_boton);
+
+            if (!textField.getText().isEmpty()) {
+                getOperador(texto_boton);
+            }
 
         });
 
+        //ActionListener para el boton de igual
         equalsButton.addActionListener(e -> {
             switch (operador) {
                 case '+' -> total2 = total1 + Double.parseDouble(textField.getText());
@@ -98,22 +102,24 @@ public class Calculator extends JFrame{
                 case '/' -> total2 = total1 / Double.parseDouble(textField.getText());
             }
             textField.setText(Double.toString(total2));
-            total1=0;
+            total1 = 0;
 
         });
 
+        //ActionListener del boton de borrar
         CEButton2.addActionListener(e -> {
             total2 = 0;
             textField.setText("");
 
         });
 
+        //ActionListener del boton de la coma
         pointButton.addActionListener(e -> {
-            if(textField.getText().equals("")){
-               textField.setText("0. ");
+            if (textField.getText().equals("")) {
+                textField.setText("0. ");
             } else if (textField.getText().contains(".")) {
                 pointButton.setEnabled(false);
-            }else {
+            } else {
                 String pointButtontext = textField.getText() + pointButton.getText();
                 textField.setText(pointButtontext);
             }
@@ -121,31 +127,35 @@ public class Calculator extends JFrame{
 
         });
 
+
+        //ActionListener del boton de restar
         restaButton.addActionListener(e -> {
             String texto_boton = restaButton.getText();
-            getOperador(texto_boton);
+
+            if (!textField.getText().isEmpty()) {  // Verifica si el campo de texto no está vacío
+                getOperador(texto_boton);
+            }
 
         });
 
+        //ActionListener del boton de dividir
         divButton.addActionListener(e -> {
             String texto_boton = divButton.getText();
-            getOperador(texto_boton);
+
+            if (!textField.getText().isEmpty()) {
+                getOperador(texto_boton);
+            }
 
         });
 
+        //ActionListener del boton de multiplicar
         multButton.addActionListener(e -> {
             String texto_boton = multButton.getText();
-            getOperador(texto_boton);
 
-        });
-        raizButton1.addActionListener(e -> {
-            total2 = sqrt(Double.parseDouble((textField.getText())));
-            textField.setText(String.valueOf(total2));
-        });
+            if (!textField.getText().isEmpty()) {
+                getOperador(texto_boton);
+            }
 
-        masmenos.addActionListener(e -> {
-            total2= (-1)*(Double.parseDouble((textField.getText())));
-            textField.setText(String.valueOf(total2));
         });
     }
     private void getOperador(String textobutton){

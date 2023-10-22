@@ -157,6 +157,20 @@ public class Calculator extends JFrame{
             }
 
         });
+
+
+        //ActionListener del boton de raiz cuadrada
+        raizButton1.addActionListener(e -> {
+            total2 = sqrt(Double.parseDouble((textField.getText())));
+            textField.setText(String.valueOf(total2));
+        });
+
+
+        //ActionListener del boton de +/-
+        masmenos.addActionListener(e -> {
+            total2= (-1)*(Double.parseDouble((textField.getText())));
+            textField.setText(String.valueOf(total2));
+        });
     }
     private void getOperador(String textobutton){
         operador = textobutton.charAt(0);
